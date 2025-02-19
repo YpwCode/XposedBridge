@@ -1,11 +1,11 @@
-package de.robv.android.xposed;
+package org.md.xlib;
 
 import android.os.SELinux;
 
-import de.robv.android.xposed.services.BaseService;
-import de.robv.android.xposed.services.BinderService;
-import de.robv.android.xposed.services.DirectAccessService;
-import de.robv.android.xposed.services.ZygoteService;
+import org.md.xlib.services.BaseService;
+import org.md.xlib.services.BinderService;
+import org.md.xlib.services.DirectAccessService;
+import org.md.xlib.services.ZygoteService;
 
 /**
  * A helper to work with (or without) SELinux, abstracting much of its big complexity.

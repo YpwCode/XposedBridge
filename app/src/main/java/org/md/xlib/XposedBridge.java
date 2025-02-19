@@ -1,4 +1,4 @@
-package de.robv.android.xposed;
+package org.md.xlib;
 
 import android.annotation.SuppressLint;
 import android.content.res.Resources;
@@ -23,12 +23,12 @@ import java.util.Map;
 import java.util.Set;
 
 import dalvik.system.PathClassLoader;
-import de.robv.android.xposed.XC_MethodHook.MethodHookParam;
-import de.robv.android.xposed.callbacks.XC_InitPackageResources;
-import de.robv.android.xposed.callbacks.XC_LoadPackage;
+import org.md.xlib.XC_MethodHook.MethodHookParam;
+import org.md.xlib.callbacks.XC_InitPackageResources;
+import org.md.xlib.callbacks.XC_LoadPackage;
 
-import static de.robv.android.xposed.XposedHelpers.getIntField;
-import static de.robv.android.xposed.XposedHelpers.setObjectField;
+import static org.md.xlib.XposedHelpers.getIntField;
+import static org.md.xlib.XposedHelpers.setObjectField;
 
 /**
  * This class contains most of Xposed's central logic, such as initialization and callbacks used by

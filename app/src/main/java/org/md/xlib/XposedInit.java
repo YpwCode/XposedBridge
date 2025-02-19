@@ -1,4 +1,4 @@
-package de.robv.android.xposed;
+package org.md.xlib;
 
 import android.annotation.SuppressLint;
 import android.app.ActivityThread;
@@ -38,27 +38,27 @@ import java.util.zip.ZipFile;
 
 import dalvik.system.DexFile;
 import dalvik.system.PathClassLoader;
-import de.robv.android.xposed.callbacks.XC_InitPackageResources;
-import de.robv.android.xposed.callbacks.XC_LoadPackage;
-import de.robv.android.xposed.callbacks.XCallback;
-import de.robv.android.xposed.services.BaseService;
+import org.md.xlib.callbacks.XC_InitPackageResources;
+import org.md.xlib.callbacks.XC_LoadPackage;
+import org.md.xlib.callbacks.XCallback;
+import org.md.xlib.services.BaseService;
 
-import static de.robv.android.xposed.XposedBridge.hookAllConstructors;
-import static de.robv.android.xposed.XposedBridge.hookAllMethods;
-import static de.robv.android.xposed.XposedHelpers.callMethod;
-import static de.robv.android.xposed.XposedHelpers.closeSilently;
-import static de.robv.android.xposed.XposedHelpers.fileContains;
-import static de.robv.android.xposed.XposedHelpers.findAndHookMethod;
-import static de.robv.android.xposed.XposedHelpers.findClass;
-import static de.robv.android.xposed.XposedHelpers.findFieldIfExists;
-import static de.robv.android.xposed.XposedHelpers.getBooleanField;
-import static de.robv.android.xposed.XposedHelpers.getObjectField;
-import static de.robv.android.xposed.XposedHelpers.getOverriddenMethods;
-import static de.robv.android.xposed.XposedHelpers.getParameterIndexByType;
-import static de.robv.android.xposed.XposedHelpers.setObjectField;
-import static de.robv.android.xposed.XposedHelpers.setStaticBooleanField;
-import static de.robv.android.xposed.XposedHelpers.setStaticLongField;
-import static de.robv.android.xposed.XposedHelpers.setStaticObjectField;
+import static org.md.xlib.XposedBridge.hookAllConstructors;
+import static org.md.xlib.XposedBridge.hookAllMethods;
+import static org.md.xlib.XposedHelpers.callMethod;
+import static org.md.xlib.XposedHelpers.closeSilently;
+import static org.md.xlib.XposedHelpers.fileContains;
+import static org.md.xlib.XposedHelpers.findAndHookMethod;
+import static org.md.xlib.XposedHelpers.findClass;
+import static org.md.xlib.XposedHelpers.findFieldIfExists;
+import static org.md.xlib.XposedHelpers.getBooleanField;
+import static org.md.xlib.XposedHelpers.getObjectField;
+import static org.md.xlib.XposedHelpers.getOverriddenMethods;
+import static org.md.xlib.XposedHelpers.getParameterIndexByType;
+import static org.md.xlib.XposedHelpers.setObjectField;
+import static org.md.xlib.XposedHelpers.setStaticBooleanField;
+import static org.md.xlib.XposedHelpers.setStaticLongField;
+import static org.md.xlib.XposedHelpers.setStaticObjectField;
 
 /*package*/ final class XposedInit {
 	private static final String TAG = XposedBridge.TAG;
@@ -66,7 +66,7 @@ import static de.robv.android.xposed.XposedHelpers.setStaticObjectField;
 	private static final boolean startsSystemServer = XposedBridge.startsSystemServer();
 	private static final String startClassName = XposedBridge.getStartClassName();
 
-	private static final String INSTALLER_PACKAGE_NAME = "de.robv.android.xposed.installer";
+	private static final String INSTALLER_PACKAGE_NAME = "org.md.xlib.installer";
 	@SuppressLint("SdCardPath")
 	private static final String BASE_DIR = Build.VERSION.SDK_INT >= 24
 			? "/data/user_de/0/" + INSTALLER_PACKAGE_NAME + "/"
