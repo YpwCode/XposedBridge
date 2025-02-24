@@ -16,6 +16,13 @@ android {
         }
     }
 
+    // buildTypes {
+    //     release {
+    //         minifyEnabled true
+    //         proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+    //     }
+    // }
+
     // Only build the release variant
     variantFilter { variant ->
         if (variant.buildType.name != BuilderConstants.RELEASE) {
@@ -27,6 +34,7 @@ android {
     // As they have to be injected before the official SDK classes and must not be part of the
     // final JAR/APK, the best way seems to compile them in a separate project and use some dirty
     // magic to add its output directory to all variants' configuration.
+   
     def hiddenapi = project(':hiddenapistubs')
     hiddenapi.afterEvaluate {
         hiddenapi.android.compileSdkVersion compileSdkVersion
@@ -129,7 +137,8 @@ task jarStubsSource(type: Jar) {
     classifier = 'sources'
 }
 
-task generateAPI(dependsOn: ['generateDocs', 'generateStubs', 'jarStubs', 'jarStubsSource'])
+// task generateAPI(dependsOn: ['generateDocs', 'generateStubs', 'jarStubs', 'jarStubsSource'])
+task generateAPI(dependsOn: ['generateStubs', 'jarStubs', 'jarStubsSource'])
 
 // Make sure that hiddenapistubs are placed before the Android SDK in app.iml
 // as there doesn't seem to be any way to configure this in Android Studio.
